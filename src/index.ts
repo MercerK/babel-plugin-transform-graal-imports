@@ -11,6 +11,6 @@ export default function declare(api, options: Options) {
 
   return {
     name: 'babel-plugin-transform-graal-imports',
-    visitor: visitor(api.t, objectName, propertyName),
+    visitor: visitor(api.types, objectName, propertyName),
   }
 }
