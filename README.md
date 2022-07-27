@@ -2,21 +2,7 @@
 
 <p align="center">A babel plugin transformer for GraalVM imports.</p>
 
-[GraalVM](https://www.graalvm.org/) is a JDK distribution written in Java and other JVM languages along with support for
-JavaScript, Ruby, Python, etc. This allows you to write JavaScript code in order to access Java classes during runtime.
-
-Depending on the configuration of the GraalVM environment, you may be limited to only accessing those Java classes by
-using `Java.type('java.util.Map')`. While it does function, type definitions become a bit of a challenge. If you wanted
-to extend the type definitions with additional classes for other Java dependencies, you'll need to import the primary
-module, extend it, perform black magic, repeat for each instance, and pray it works. It is painful, but it does build
-character!
-
-Fortunately, we can decrease that pain! There are open-source tools available to generate TypeScript type definitions
-from Java implementations. You can take that type definition and add it as a dev dependency to your project. This gives
-you the capability of doing `import { Map } from 'java.util'`. (**Note**: Some implementations can stop here, as it'll
-work).
-
-The next step would be to use Babel, add this plugin, build with babel, and we'll perform some wiggly wabbly magic.
+Be able to use `import { Map } from 'java.util'` instead of `const Map = Java.type('java.util.Map')`
 
 # How does it work
 
@@ -76,6 +62,15 @@ Make sure to add the type definitions, add the imports, and build away!
 
 # Background
 
+[GraalVM](https://www.graalvm.org/) is a JDK distribution written in Java and other JVM languages along with support for
+JavaScript, Ruby, Python, etc. This allows you to write JavaScript code in order to access Java classes during runtime.
+
+Depending on the configuration of the GraalVM environment, you may be limited to only accessing those Java classes by
+using `Java.type('java.util.Map')`. While it does function, type definitions become a bit of a challenge. If you wanted
+to extend the type definitions with additional classes for other Java dependencies, you'll need to import the primary
+module, extend it, perform black magic, repeat for each instance, and pray it works. It is painful, but it does build
+character!
+
 This plugin was created to solve a problem within the [Grakkit](https://github.com/grakkit/grakkit) ecosystem. Grakkit
 is a Minecraft Java Plugin that leverages GraalVM, which allows existing JavaScript developers to learn Minecraft Plugin
 development without having to drink Java.
@@ -89,3 +84,5 @@ In early 2022, folks discovered another GraalVM implementation within Minecraft 
 created called [java-ts-bind](https://github.com/bensku/java-ts-bind). However, Grakkit doesn't operate in the same
 fashion as CraftJS, so we couldn't do the `import { Map } from 'java.util'`; we needed to do
 `core.type('java.util.Map')`. **Note**: `core.type` is a wrapper around `Java.type`.
+
+After a little inspiration and experimenting, we ended up creating this plugin!
