@@ -86,3 +86,7 @@ fashion as CraftJS, so we couldn't do the `import { Map } from 'java.util'`; we 
 `core.type('java.util.Map')`. **Note**: `core.type` is a wrapper around `Java.type`.
 
 After a little inspiration and experimenting, we ended up creating this plugin!
+
+## Misc
+
+Feel free to come join us in the [Grakkit Discord](https://discord.gg/e682hwR)!
