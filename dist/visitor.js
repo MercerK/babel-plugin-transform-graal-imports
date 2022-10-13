@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.visitor = void 0;
-const JAVA_PREFIXES = ['java.', 'com.', 'co.', 'org.', 'net.'];
+const JAVA_PREFIXES = ['java.', 'com.', 'co.', 'org.', 'net.', 'me.', 'io.'];
 const visitor = (t, objectName = 'Java', propertyName = 'type') => ({
     ImportDeclaration(path) {
         const source = path.node.source.value;

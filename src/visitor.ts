@@ -1,7 +1,7 @@
 import { BabelTypes } from './types'
 import type { NodePath } from '@babel/traverse'
 
-const JAVA_PREFIXES = ['java.', 'com.', 'co.', 'org.', 'net.']
+const JAVA_PREFIXES = ['java.', 'com.', 'co.', 'org.', 'net.', 'me.', 'io.']
 
 export const visitor = (t: BabelTypes, objectName = 'Java', propertyName = 'type') => ({
   ImportDeclaration(path: NodePath<any>) {
